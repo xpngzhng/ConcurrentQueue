@@ -173,7 +173,7 @@ public:
         {
             condNonEmpty.wait(lock, [this]{return (!this->queue.empty()) || this->pass; });
         }
-        if (pass)
+        if (queue.empty() && pass)
         {
             item = ItemType();
             return false;
@@ -242,7 +242,7 @@ public:
         {
             condNonEmpty.wait(lock, [this]{return (!this->queue.empty()) || this->pass; });
         }
-        if (pass)
+        if (queue.empty() && pass)
         {
             item = ItemType();
             return false;
